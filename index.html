@@ -31,13 +31,13 @@
             </div>
 
             <div id="play-game">
-                <button onclick="">Play game???</button>
+                <button onclick="playGame()">Play game???</button>
             </div>
             <div style="display: none;" class="color-div">
                 <h4>Pick a colour</h4>
                 <p style="display: none;">Great... now it's ruined!</p>
-                <input type="color" id="color-picker" onchange="" value="#0084ff"/>
-                <button style="display: none;" onclick="">Reset</button>
+                <input type="color" id="color-picker" onchange="changeColor()" value="#0084ff"/>
+                <button style="display: none;" onclick="resetColor()">Reset</button>
             </div>
         </section>
 
@@ -156,6 +156,55 @@
     <footer>
         <p>By <a target="_blank" href="https://www.linkedin.com/in/tomlhennessy96/?originalSubdomain=uk">Tom Hennessy</a> ⭐️ the repo on <a target="_blank" href="https://github.com/tomlhennessy/web-portfolio">GitHub</a></p>
     </footer>
-    <script></script>
+    <script>
+        // interactivity for color switching game
+
+        // Select elements correctly
+        const body = document.querySelector('body');
+        const colorInput = document.getElementById('color-picker');
+        const colorDiv = document.querySelector('.color-div');
+        const hiddenText = document.querySelector('.color-div p');
+        const resetBtn = document.querySelector('.color-div button');
+        const playBtn = document.querySelector('#play-game button');
+
+        function playGame() {
+            console.log("Game started!");
+            colorDiv.style.display = 'block';
+            playBtn.style.display = 'none';
+        }
+
+        function changeColor() {
+            console.log("Color changed!");
+            const selectedColor = colorInput.value;
+            body.style.background = selectedColor;
+            resetBtn.style.display = 'block';
+            if (hiddenText) hiddenText.style.display = 'block';
+            colorInput.style.display = 'none';
+        }
+
+        function resetColor() {
+            console.log("Reset button clicked!");
+
+            body.style.background = 'white';
+
+            colorInput.style.display = 'block';
+            playBtn.style.display = 'block';
+
+            if (hiddenText) {
+                hiddenText.style.display = 'none';
+                console.log("Hidden text hidden");
+            }
+
+            if (resetBtn) {
+                resetBtn.style.display = 'none';
+                console.log("Reset button hidden");
+            }
+
+            if (colorDiv) {
+                colorDiv.style.display = 'none';
+                console.log("Color div hidden");
+            }
+        }
+    </script>
 </body>
 </html>
