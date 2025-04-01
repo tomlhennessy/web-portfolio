@@ -82,6 +82,10 @@ section {
     gap: 1rem;
 }
 
+.project-card>div:first-of-type {
+    flex: 1;
+}
+
 .project-links {
     display: flex;
     align-items: center;
@@ -110,6 +114,7 @@ section {
     .project-card {
         flex-direction: row;
     }
+
     .project-card .img-div {
         max-width: 30%;
     }
